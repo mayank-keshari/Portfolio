@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Portfolio</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+        /* Container Layout */
+        .social-links {
+            display: flex;
+            gap: 15px; /* Space between buttons */
+            flex-wrap: wrap; /* Allows wrapping on small screens */
+        }
+
+        /* General Button Styling */
+        .social-btn {
+            display: flex;            /* THIS fixes the name alignment */
+            align-items: center;      /* Vertically centers icon and text */
+            justify-content: center;
+            gap: 10px;                /* Space between the icon and the name */
+            padding: 10px 20px;
+            text-decoration: none;    /* Removes underline from links */
+            border-radius: 8px;       /* Rounded corners */
+            font-family: sans-serif;
+            font-weight: 600;
+            transition: transform 0.2s ease;
+            color: white;             /* Text color */
+        }
+
+        /* Hover Effect */
+        .social-btn:hover {
+            transform: translateY(-3px); /* Moves up slightly on hover */
+            opacity: 0.9;
+        }
+
+        /* Specific Brand Colors */
+        .linkedin {
+            background-color: #0077b5;
+        }
+
+        .github {
+            background-color: #333;
+        }
+
+        .instagram {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        }
+    </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <h2 class="logo">My<span>Portfolio</span></h2>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section id="home" class="hero gradient-animate">
+  
+  <div class="hero-text">
+    <h1 class="hero-title reveal-text">
+      Hello, I'm <span class="name-glow">Mayank</span>
+    </h1>
+
+    <p class="hero-subtitle reveal-text delay-1">
+      Full-Stack Developer <span>|</span> Web Designer
+    </p>
+  </div>
+
+  <div class="profile-container reveal-img delay-2">
+    <img src="profile.png" alt="My Photo" class="profile-img floating-glow">
+  </div>
+
+  <div class="hero-buttons reveal-text delay-3">
+    <button class="glow-btn" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
+      Connect
+    </button>
+
+    <a href="resume.pdf" download class="resume-btn glow-btn outline">
+      Download Resume
+    </a>
+  </div>
+
+</section>
+
+  <section id="about" class="section">
+    <h2>About Me</h2>
+    <p>
+     Hi, I’m Mayank Keshari, a passionate web developer and computer science student.
+     I enjoy building responsive and user-friendly websites using HTML, CSS, and JavaScript.
+
+     I like turning ideas into real projects and continuously improving my skills by creating small web applications.
+
+     I have a good understanding of programming concepts, problem-solving, and basic data structures. I am currently focusing on improving my JavaScript and front-end development skills.
+
+     I believe in learning by doing and I’m always excited to work on new projects and challenges.
+    </p>
+  </section>
+
+  <section id="skills" class="section blue-bg">
+    <h2>My Skills</h2>
+    <div class="skills">
+      <div class="skill">HTML</div>
+      <div class="skill">CSS</div>
+      <div class="skill">JavaScript</div>
+      <div class="skill">React</div>
+      <div class="skill">Git</div>
+      <div class="skill">SAP ABAP</div>
+      <div class="skill">JAVA</div>
+      <div class="skill">C/C++</div>
+      <div class="skill">Python</div>
+    </div>
+  </section>
+
+  <section id="projects" class="section">
+  <h2>Projects</h2>
+
+  <div class="projects">
+
+    <div class="card">
+      <h3>Image Search App</h3>
+      <p>Search images using API with clean UI.</p>
+
+      <div class="project-links">
+        <a href="https://mayank-keshari.github.io/Image-search/" target="_blank">
+          Live Demo
+        </a>
+        <a href="https://github.com/mayank-keshari/Image-search.git" target="_blank">
+          GitHub
+        </a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Tic-Tac-Toe</h3>
+      <p>Classic game built using HTML, CSS & JS.</p>
+
+      <div class="project-links">
+        <a href="https://lnkd.in/gHx7TA72" target="_blank">
+          Live Demo
+        </a>
+        <a href="https://lnkd.in/gTB3gCim" target="_blank">
+          GitHub
+        </a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Resume-Builder</h3>
+      <p>A web application for building resumes.</p>
+
+      <div class="project-links">
+        <a href="https://mayank-keshari.github.io/Resume-builder/" target="_blank">
+          Live Demo
+        </a>
+        <a href="https://github.com/mayank-keshari/Resume-builder.git" target="_blank">
+          GitHub
+        </a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Currency Converter</h3>
+      <p>Real-time currency conversion tool.</p>
+
+      <div class="project-links">
+        <a href="https://mayank-keshari.github.io/currency-converter/" target="_blank">
+          Live Demo
+        </a>
+        <a href="https://github.com/mayank-keshari/currency-converter.git" target="_blank">
+          GitHub
+        </a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Weather-Tracking App</h3>
+      <p>Weather tracking using HTML, CSS and JS.</p>
+
+      <div class="project-links">
+        <a href="https://mayank-keshari.github.io/Weather-tracking/" target="_blank">
+          Live Demo
+        </a>
+        <a href="https://github.com/mayank-keshari/Weather-tracking.git" target="_blank">
+          GitHub
+        </a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>To-Do List App</h3>
+      <p>Task manager with local storage.</p>
+
+      <div class="project-links">
+        <a href="https://lnkd.in/gaK_i368" target="_blank">
+          Live Demo
+        </a>
+        <a href="https://lnkd.in/gKh3uxMS" target="_blank">
+          GitHub
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="certifications" class="section">
+  <h2>Certifications</h2>
+  
+  <div class="projects cert-container">
+
+    <div class="card cert-card">
+      <div class="cert-icon">
+        <i class="fa-brands fa-java"></i>
+      </div>
+      <div class="cert-content">
+        <h3>Programming In Java</h3>
+        <p class="issuer">NPTEL (IIT Kharagpur)</p>
+        <p class="details">Score: 90% (Elite + Gold)</p>
+        <span class="date">Issued: Oct 2025</span>
+        
+        <div class="project-links">
+           <a href="NPTEL JAVA CERTIFICATE.pdf" target="_blank" class="view-btn">
+             <i class="fa-regular fa-eye"></i> View Certificate
+           </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card cert-card">
+      <div class="cert-icon">
+        <i class="fa-solid fa-brain"></i>
+      </div>
+      <div class="cert-content">
+        <h3>AI-ML Virtual Internship</h3>
+        <p class="issuer">AICTE & Google for Developers</p>
+        <p class="details">Duration: 10 Weeks</p>
+        <span class="date">Issued: Sep 2025</span>
+        
+        <div class="project-links">
+           <a href="Eduskill_Certificate.pdf" target="_blank" class="view-btn">
+             <i class="fa-regular fa-eye"></i> View Certificate
+           </a>
+        </div>
+      </div>
+    </div>
+
+     <div class="card cert-card">
+      <div class="cert-icon">
+        <i class="fa-solid fa-brain"></i>
+      </div>
+      <div class="cert-content">
+        <h3>JAVA Virtual Internship</h3>
+        <p class="issuer">Codesoft</p>
+        <p class="details">Duration: 4 Weeks</p>
+        <span class="date">Issued: Oct 2025</span>
+        
+        <div class="project-links">
+           <a href="codesoft.pdf" target="_blank" class="view-btn">
+             <i class="fa-regular fa-eye"></i> View Certificate
+           </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+  <section id="contact" class="section">
+  <h2>Contact Me</h2>
+
+  <div class="contact-wrapper">
+    
+    <div class="contact-info">
+      <h3>Let's work together</h3>
+      <p>Have a project in mind or want to discuss AI, Java, or Web Development? Drop me a message.</p>
+      
+      <div class="info-item">
+        <div class="icon-box">
+          <i class="fa-solid fa-envelope"></i>
+        </div>
+        <div class="details">
+          <span>Email Me</span>
+          <a href="mailto:mayankkeshari007@gmail.com">mayankkeshari007@gmail.com</a>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="icon-box">
+          <i class="fa-solid fa-location-dot"></i>
+        </div>
+        <div class="details">
+          <span>Location</span>
+          <p>India</p>
+        </div>
+      </div>
+
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/mayankkesharii/" target="_blank" class="social-btn linkedin">
+            <i class="fa-brands fa-linkedin-in"></i>
+            
+        </a>
+        
+        <a href="https://github.com/mayank-keshari" target="_blank" class="social-btn github">
+            <i class="fa-brands fa-github"></i>
+            
+        </a>
+        
+        <a href="https://www.instagram.com/mayank_kesharii/" target="_blank" class="social-btn instagram">
+            <i class="fa-brands fa-instagram"></i>
+            
+        </a>
+    </div>
+    </div>
+
+    <form class="contact-form-advanced" action="https://formspree.io/f/mgowjevp" method="POST">
+      
+      <div class="input-group">
+        <input type="text" name="name" required>
+        <label>Your Name</label>
+      </div>
+
+      <div class="input-group">
+        <input type="email" name="email" required>
+        <label>Your Email</label>
+      </div>
+
+      <div class="input-group">
+        <textarea name="message" rows="2" required></textarea>
+        <label>Your Message</label>
+      </div>
+
+      <button type="submit" class="glow-btn submit-btn">
+        Send Message <i class="fa-solid fa-paper-plane"></i>
+      </button>
+
+    </form>
+
+  </div>
+</section>
+
+  <footer>
+    <p>© 2025 Mayank Keshari | All Rights Reserved</p>
+  </footer>
+
+  <div class="bird-cursor"></div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>

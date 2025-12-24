@@ -1,0 +1,832 @@
+/* ================= VARIABLES & RESET ================= */
+:root {
+  --bg-dark: #0f172a;
+  --bg-mesh: radial-gradient(at 0% 0%, rgb(3, 1, 17) 0, transparent 50%), 
+             radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), 
+             radial-gradient(at 100% 0%, rgb(30, 39, 39) 0, transparent 50%);
+  --primary: #3b82f6;
+  --accent-cyan: #06b6d4;
+  --accent-purple: #8b5cf6;
+  --accent-pink: #ec4899;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-dark);
+  background-image: var(--bg-mesh);
+  background-size: 200% 200%;
+  animation: meshMove 15s ease infinite;
+  color: var(--text-main);
+  overflow-x: hidden;
+}
+
+/* Background Animation */
+@keyframes meshMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ================= NAVBAR (Glass Effect) ================= */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  background: rgba(15, 23, 42, 0.7); /* Semi-transparent */
+  backdrop-filter: blur(12px); /* Blur effect */
+  border-bottom: 1px solid var(--glass-border);
+  z-index: 1000;
+  transition: 0.3s;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(to right, var(--accent-cyan), var(--accent-purple));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.nav-links li {
+  margin-left: 30px;
+}
+
+.nav-links a {
+  color: var(--text-main);
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: 0.3s;
+}
+
+/* Nav Underline Animation */
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background: var(--accent-cyan);
+  transition: width 0.3s;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-links a:hover {
+  color: var(--accent-cyan);
+  text-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+}
+
+/* ================= HERO SECTION ================= */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px;
+  position: relative;
+}
+
+/* Text Gradient & Glow */
+.hero h1 {
+  font-size: 3.5rem;
+  line-height: 1.2;
+  margin-bottom: 15px;
+}
+
+.hero span {
+  background: linear-gradient(120deg, var(--accent-cyan), var(--accent-pink));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  position: relative;
+  display: inline-block;
+}
+
+.hero p {
+  color: var(--text-muted);
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin-bottom: 30px;
+}
+
+/* Hero Button (Neon) */
+.hero button, .glow-btn {
+  padding: 12px 35px;
+  border: none;
+  background: transparent;
+  color: var(--accent-cyan);
+  border: 2px solid var(--accent-cyan);
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 50px;
+  transition: 0.4s;
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.1);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.hero button:hover, .glow-btn:hover {
+  background: var(--accent-cyan);
+  color: #000;
+  box-shadow: 0 0 20px var(--accent-cyan), 0 0 40px rgba(6, 182, 212, 0.4);
+  transform: translateY(-3px);
+}
+
+/* ================= PROFILE IMAGE (Orbital) ================= */
+.profile-container {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.profile-img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid transparent;
+  background: linear-gradient(var(--bg-dark), var(--bg-dark)) padding-box,
+              linear-gradient(45deg, var(--accent-cyan), var(--accent-pink)) border-box;
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
+  animation: floatImage 6s ease-in-out infinite;
+}
+
+/* Floating Animation */
+@keyframes floatImage {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+/* ================= SECTIONS & HEADINGS ================= */
+.section {
+  padding: 100px 50px;
+  text-align: center;
+}
+
+.section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  color: var(--text-main);
+  position: relative;
+  display: inline-block;
+}
+
+.section h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: var(--accent-purple);
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+.blue-bg {
+  background: rgba(255, 255, 255, 0.02); /* Slight contrast */
+}
+
+/* ================= SKILLS (Pills) ================= */
+.skills {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  max-width: 800px;
+  margin: auto;
+}
+
+.skill {
+  padding: 12px 30px;
+  background: var(--glass-bg);
+  color: var(--text-main);
+  border: 1px solid var(--glass-border);
+  border-radius: 30px;
+  font-weight: 500;
+  transition: 0.3s;
+  cursor: default;
+}
+
+.skill:hover {
+  background: var(--accent-purple);
+  border-color: var(--accent-purple);
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+}
+
+/* ================= PROJECT CARDS (Glassmorphism) ================= */
+.projects {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 300px;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  text-align: left;
+  transition: 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card h3 {
+  color: var(--accent-cyan);
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+/* Card Hover 3D Effect */
+.card:hover {
+  transform: translateY(-15px) scale(1.02);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 
+              0 0 20px rgba(6, 182, 212, 0.1); /* Cyan glow */
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* Project Links */
+.project-links {
+  margin-top: auto;
+  display: flex;
+  gap: 15px;
+}
+
+.project-links a {
+  font-size: 0.85rem;
+  color: var(--text-main);
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+}
+
+.project-links a:hover {
+  color: var(--accent-pink);
+  transform: translateX(5px);
+}
+
+/* ================= CONTACT FORM ================= */
+.contact-form {
+  max-width: 500px;
+  margin: auto;
+  background: var(--glass-bg);
+  padding: 40px;
+  border-radius: 16px;
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(10px);
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  margin: 10px 0 20px;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  color: white;
+  font-size: 1rem;
+  outline: none;
+  transition: 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.1);
+}
+
+.contact-form button {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(90deg, var(--accent-cyan), var(--primary));
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.contact-form button:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(6, 182, 212, 0.3);
+}
+
+/* ================= FOOTER ================= */
+footer {
+  text-align: center;
+  padding: 30px;
+  background: rgba(15, 23, 42, 0.8);
+  border-top: 1px solid var(--glass-border);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* ================= UTILITY ANIMATIONS ================= */
+.fade-in {
+  opacity: 0;
+  animation: fadeUp 1s forwards ease-out;
+}
+
+.delay { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 2.5rem; }
+  .navbar { padding: 15px 20px; flex-direction: column; gap: 15px;}
+  .nav-links { margin-top: 10px; }
+  .nav-links li { margin: 0 10px; }
+}
+/* ================= VIEW BUTTON STYLE ================= */
+
+.view-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s ease;
+  
+  /* Glassy Neon Default State */
+  background: rgba(6, 182, 212, 0.1); /* Low opacity cyan */
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  color: var(--accent-cyan);
+}
+
+.view-btn i {
+  transition: 0.3s;
+}
+
+/* Hover Animation: Fills up and Glows */
+.view-btn:hover {
+  background: var(--accent-cyan);
+  color: #0f172a; /* Dark text on bright button */
+  box-shadow: 0 0 15px var(--accent-cyan), 0 0 30px rgba(6, 182, 212, 0.4);
+  transform: translateY(-2px);
+  border-color: transparent;
+}
+
+.view-btn:hover i {
+  transform: scale(1.2); /* Icon grows slightly */
+}
+
+/* Active Click Effect */
+.view-btn:active {
+  transform: scale(0.95);
+}
+/* ================= ADVANCED CONTACT SECTION ================= */
+
+.contact-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 0;
+  max-width: 900px;
+  margin: 0 auto;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(0,0,0,0.3);
+}
+
+/* --- Left Side: Info --- */
+.contact-info {
+  flex: 1;
+  padding: 40px;
+  background: rgba(15, 23, 42, 0.6);
+  border-right: 1px solid var(--glass-border);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact-info h3 {
+  font-size: 1.8rem;
+  color: var(--text-main);
+  margin-bottom: 15px;
+}
+
+.contact-info p {
+  color: var(--text-muted);
+  margin-bottom: 30px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Info Items (Email/Location) */
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.icon-box {
+  width: 45px;
+  height: 45px;
+  background: rgba(6, 182, 212, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-cyan);
+  font-size: 1.2rem;
+  transition: 0.3s;
+}
+
+.info-item:hover .icon-box {
+  background: var(--accent-cyan);
+  color: #fff;
+  box-shadow: 0 0 15px var(--accent-cyan);
+}
+
+.details span {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.details a, .details p {
+  color: var(--text-main);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.details a:hover {
+  color: var(--accent-pink);
+}
+
+/* Social Icons */
+.social-links {
+  margin-top: auto;
+  display: flex;
+  gap: 15px;
+}
+
+.social-links a {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--glass-border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-main);
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.social-links a:hover {
+  background: var(--accent-purple);
+  border-color: var(--accent-purple);
+  transform: translateY(-3px);
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
+}
+
+/* --- Right Side: Form --- */
+.contact-form-advanced {
+  flex: 1.5;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Floating Label Inputs */
+.input-group {
+  position: relative;
+  width: 100%;
+}
+
+.input-group input, 
+.input-group textarea {
+  width: 100%;
+  padding: 12px 0;
+  font-size: 1rem;
+  color: var(--text-main);
+  border: none;
+  border-bottom: 2px solid var(--glass-border);
+  background: transparent;
+  outline: none;
+  transition: 0.3s;
+}
+
+.input-group label {
+  position: absolute;
+  top: 12px;
+  left: 0;
+  color: var(--text-muted);
+  font-size: 1rem;
+  pointer-events: none;
+  transition: 0.3s;
+}
+
+/* Input Focus Animation */
+.input-group input:focus,
+.input-group textarea:focus,
+.input-group input:valid,
+.input-group textarea:valid {
+  border-bottom-color: var(--accent-cyan);
+}
+
+/* Move Label Up */
+.input-group input:focus ~ label,
+.input-group textarea:focus ~ label,
+.input-group input:valid ~ label,
+.input-group textarea:valid ~ label {
+  top: -10px;
+  font-size: 0.8rem;
+  color: var(--accent-cyan);
+}
+
+.submit-btn {
+  margin-top: 10px;
+  width: fit-content;
+  align-self: flex-start;
+  background: linear-gradient(135deg, var(--accent-cyan), var(--primary));
+  border: none;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .contact-wrapper {
+    flex-direction: column;
+    margin: 0 15px;
+  }
+  .contact-info {
+    border-right: none;
+    border-bottom: 1px solid var(--glass-border);
+  }
+}
+/* ================= HERO ADVANCED ANIMATION ================= */
+
+/* Text reveal animation */
+.reveal-text {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: textReveal 1.2s ease forwards;
+}
+
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+.delay-3 { animation-delay: 0.6s; }
+
+@keyframes textReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Name shimmer glow */
+.name-glow {
+  position: relative;
+  background: linear-gradient(120deg, #ffffff, #3b82f6, #ffffff);
+  background-size: 200%;
+  
+  color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+
+@keyframes shimmer {
+  to { background-position: 200%; }
+}
+
+/* Profile Image Floating + Glow */
+.floating-glow {
+  animation: floatImage 6s ease-in-out infinite;
+  box-shadow:
+    0 0 40px rgba(59,130,246,0.5),
+    0 0 80px rgba(255,255,255,0.15);
+}
+
+/* Soft halo around image */
+.profile-container::after {
+  content: "";
+  position: absolute;
+  inset: -20px;
+  background: radial-gradient(
+    circle,
+    rgba(59,130,246,0.4),
+    transparent 70%
+  );
+  filter: blur(40px);
+  z-index: -1;
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%,100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+/* Subtitle glow divider */
+.hero-subtitle span {
+  color: #3b82f6;
+  padding: 0 10px;
+}
+
+/* Buttons stagger effect */
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.glow-btn.outline {
+  background: transparent;
+  color: #3b82f6;
+  border: 2px solid #3b82f6;
+}
+
+.glow-btn.outline:hover {
+  background: #3b82f6;
+  color: #000;
+}
+
+/* Responsive polish */
+@media (max-width: 768px) {
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+
+/* --- SOCIAL LINKS CONTAINER --- */
+.social-links {
+    display: flex;
+    gap: 15px; /* Space between buttons */
+    justify-content: center;
+    flex-wrap: wrap; /* Wraps to next line on small mobile screens */
+    position: relative;
+    z-index: 1001;
+}
+
+/* --- PREMIUM BUTTON STYLE --- */
+.social-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between icon and text */
+    padding: 10px 20px;
+    border-radius: 30px; /* Pill shape */
+    background: rgba(255, 255, 255, 0.1); /* Glass background */
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.social-btn i {
+    font-size: 18px; /* Icon size */
+}
+
+/* --- HOVER EFFECTS (Brand Colors) --- */
+.social-btn:hover {
+    transform: translateY(-3px);
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Specific Brand Colors on Hover */
+.social-btn.linkedin:hover {
+    background: #0077b5;
+    box-shadow: 0 0 20px rgba(0, 119, 181, 0.6);
+}
+
+.social-btn.github:hover {
+    background: #333;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.social-btn.instagram:hover {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    box-shadow: 0 0 20px rgba(220, 39, 67, 0.6);
+}
+/* ================= INTEGRATED SOCIAL LINKS ================= */
+
+.social-links {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 20px; /* Spacing from previous text */
+}
+
+/* Base Button Style - Matches your Theme's Glassmorphism */
+.social-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* Gap between Icon and Text */
+  
+  padding: 12px 25px;
+  border-radius: 50px; /* Fully rounded pill shape */
+  
+  /* Use your defined variables for consistency */
+  background: var(--glass-bg); 
+  border: 1px solid var(--glass-border);
+  color: var(--text-muted);
+  
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.social-btn i {
+  font-size: 1.1rem;
+  transition: 0.3s;
+}
+
+/* General Hover Effect */
+.social-btn:hover {
+  transform: translateY(-3px);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* --- BRAND SPECIFIC HOVERS (Glow Effects) --- */
+
+/* LinkedIn - Blue Glow */
+.social-btn.linkedin:hover {
+  background: #0077b5;
+  box-shadow: 0 0 20px rgba(0, 119, 181, 0.5);
+}
+
+/* GitHub - White/Grey Glow */
+.social-btn.github:hover {
+  background: #24292e;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+/* Instagram - Gradient Glow */
+.social-btn.instagram:hover {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  box-shadow: 0 0 20px rgba(220, 39, 67, 0.5);
+  border-color: transparent;
+}
